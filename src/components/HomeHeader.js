@@ -9,9 +9,29 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { ReactComponent as Logo } from "../img/plurality-logo.svg";
+import {ReactComponent as Logo } from "../img/plurality-logo.svg";
+import {NavLink} from 'react-router-dom';
 
-const pages = ['Home', 'Explore', 'About Us', 'Profile', 'Share your story'];
+var pages = [{
+  pageName: "Home",
+  route: "/Home"
+},
+{
+  pageName: "Explore",
+  route: "/Explore"
+},
+{
+  pageName: "About Us",
+  route: "/AboutUs"
+},
+{
+  pageName: "Profile",
+  route: "/Profile"
+},
+{
+  pageName: "Share your story",
+  route: "/Story"
+}];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -65,10 +85,12 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page["pageName"]} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <NavLink to={page.route}></NavLink>
+                  </Typography>
                 </MenuItem>
-              ))}
+              ))};
             </Menu>
           </Box>
 
