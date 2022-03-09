@@ -32,14 +32,14 @@ export default function App() {
         !session ? <Landing /> : 
         <>
           {/* <HomeHeader key={session.user.id} session={session} /> */}
-          <Logo />
+          <Logo/>
           <Router>
             <nav>
-              <Link to="/">Home</Link>
-              <Link to="/explore">Explore</Link>
-              <Link to="/about-us">About Us</Link>
-              <Link to="/profile">Profile</Link>
-              <Link to="/share">Share your story</Link>
+              <li><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></li>
+              <li><Link to="/explore" style={{ textDecoration: 'none' }}>Explore</Link></li>
+              <li><Link to="/about-us" style={{ textDecoration: 'none' }}>About Us</Link></li>
+              <li><Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link></li>
+              <li className="buttonNav" ><Link to="/share" style={{ textDecoration: 'none' }}>Share your story</Link></li>
             </nav>
 
             <Routes>
