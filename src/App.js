@@ -34,7 +34,7 @@ export default function App() {
         !session ? <Landing /> : 
         <>
           {/* <HomeHeader key={session.user.id} session={session} /> */}
-          <Link to="/" Logo></Link>
+          <Logo><Link to="/"></Link></Logo>
           <Router>
             <nav>
               <li className="items plain"><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></li>
