@@ -12,28 +12,28 @@ import MenuItem from '@mui/material/MenuItem';
 import {ReactComponent as Logo } from "../img/plurality-logo.svg";
 import {NavLink} from 'react-router-dom';
 
-var pages = [{
-  pageName: "Home",
-  route: "/Home"
-},
-{
-  pageName: "Explore",
-  route: "/Explore"
-},
-{
-  pageName: "About Us",
-  route: "/AboutUs"
-},
-{
-  pageName: "Profile",
-  route: "/Profile"
-},
-{
-  pageName: "Share your story",
-  route: "/Story"
-}];
-
 const ResponsiveAppBar = () => {
+  const pages = [{
+    pageName: "Home",
+    route: "/Home"
+  },
+  {
+    pageName: "Explore",
+    route: "/Explore"
+  },
+  {
+    pageName: "About Us",
+    route: "/AboutUs"
+  },
+  {
+    pageName: "Profile",
+    route: "/Profile"
+  },
+  {
+    pageName: "Share your story",
+    route: "/Story"
+  }];
+
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -49,7 +49,7 @@ const ResponsiveAppBar = () => {
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <div
-            noWrap
+            nowrap="true"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
             <Logo />
@@ -97,11 +97,11 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page["pageName"]}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page["pageName"]}
               </Button>
             ))}
           </Box>
