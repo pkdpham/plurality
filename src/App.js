@@ -19,7 +19,7 @@ export default function App() {
   const toggleNav = () => {
     setToggleMenu(!toggleMenu)
   }
-
+ 
   useEffect(() => {
     setSession(supabase.auth.session())
 
@@ -34,7 +34,7 @@ export default function App() {
         !session ? <Landing /> : 
         <>
           {/* <HomeHeader key={session.user.id} session={session} /> */}
-          <Logo/>
+          <Link to="/" Logo></Link>
           <Router>
             <nav>
               <li className="items plain"><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></li>
