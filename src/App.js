@@ -3,8 +3,6 @@ import { supabase } from "./supabaseClient"
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ReactComponent as Logo } from "./img/plurality-logo.svg";
 
-import Account from "./api/Account"
-import HomeHeader from "./components/HomeHeader"
 import Landing from "./views/Landing"
 import Home from "./views/Home"
 // TODO: implement these modules so we can render them:
