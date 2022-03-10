@@ -27,15 +27,19 @@ export default function Landing() {
             <div>
                 <Logo />
             </div>
-            <div className="container landing-words">
-                <h1 style={{color: "#010101"}}>Learn.</h1>
-                <h1 style={{color: "#6592e8"}}>Communicate.</h1>
-                <h1 style={{color: "#da4343"}}>Empathize.</h1>
-                <p>Learn about the impact of American policies by reading and sharing individual stories.</p>
-            </div>
-            <div className="container auth">
-                <AuthBasic />
-            </div>
+            <div className="flex-container">
+              <div className="flex-child landing-words">
+                  <h1 style={{color: "#010101"}}>Learn.</h1>
+                  <h1 style={{color: "#6592e8"}}>Communicate.</h1>
+                  <h1 style={{color: "#da4343"}}>Empathize.</h1>
+                  <p style={{fontWeight: "900"}}>
+                    Learn about the impact of American policies by reading and sharing individual stories.
+                  </p>
+              </div>
+              <div className="flex-child auth">
+                  <AuthBasic />
+              </div>
+            </div>            
         </Container> 
     )
 }

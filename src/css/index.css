@@ -107,8 +107,23 @@ nav li.plain:hover::before {
   color: #000000;
 }
 
-.container.landing-words {
-  padding-top: 25px;
+.flex-container {
+  padding-top: 2em;
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+}  
+
+.flex-child:first-child {
+  margin-right: 20px;
+} 
+
+.landing-words {
+  flex-direction: column;
+  justify-content: start;
+  padding-top: 8em;
   padding-bottom: 25px;
 }
 
@@ -119,6 +134,7 @@ nav li.plain:hover::before {
 }
 
 .auth div.MuiContainer-root {
+  justify-content: end;
   padding-top: 2em;
   padding-bottom: 2em;
   padding-left: 2em;
@@ -467,7 +483,7 @@ button.primary,
   animation: spin 1s linear infinite;
   filter: invert(1);
 }
-
+/* 
 .sbui-input-icon-container {
   opacity: 0;
-}
+} */
