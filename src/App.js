@@ -1,16 +1,26 @@
-import { useState, useEffect } from 'react'
-import { supabase } from './supabaseClient'
-import Landing from './views/Landing'
-import Profile from './views/Profile'
-import Home from './views/Home'
-import Explore from './views/Explore'
-import Story from './views/Story'
-import AboutUs from './views/AboutUs'
-import HomeHeader from './components/HomeHeader'
-import {Route, Routes} from 'react-router-dom';
+import { useState, useEffect } from "react"
+import { supabase } from "./supabaseClient"
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { ReactComponent as Logo } from "./img/plurality-logo.svg";
+
+import Account from "./api/Account"
+import HomeHeader from "./components/HomeHeader"
+import Landing from "./views/Landing"
+import Home from "./views/Home"
+// TODO: implement these modules so we can render them:
+import Explore from "./views/Explore"
+import Profile from "./views/Profile"
+import AboutUs from "./views/AboutUs"
+import Share from "./views/Share"
+// import Story from "./views/Story"
 
 export default function App() {
-  const [session, setSession] = useState(null)
+  const [session, setSession] = useState(null);
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const toggleNav = () => {
+    setToggleMenu(!toggleMenu)
+  }
 
   useEffect(() => {
     setSession(supabase.auth.session())
@@ -21,29 +31,30 @@ export default function App() {
   }, [])
 
   return (
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
+    <div className="container" style={{ padding: "50px 0 100px 0" }}>
       {
         !session ? <Landing /> : 
-        <div>
-          <HomeHeader />
-          <Routes>
-            <Route exact path='/' element={
-              <Home/>
-            }/>
-            <Route path='/Explore' element={
-              <Explore/>
-            }/>
-            <Route path='/AboutUs' element={
-              <AboutUs/>
-            }/>
-            <Route path='/Profile' element={
-              <Profile key={session.user.id} session={session}/>
-            }/>
-            <Route path='/Story' element={
-              <Story/>
-            }/>
-          </Routes>
-        </div>
+        <>
+          {/* <HomeHeader key={session.user.id} session={session} /> */}
+          <Logo/>
+          <Router>
+            <nav>
+              <li className="items plain"><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></li>
+              <li className="items plain"><Link to="/explore" style={{ textDecoration: 'none' }}>Explore</Link></li>
+              <li className="items plain"><Link to="/about-us" style={{ textDecoration: 'none' }}>About Us</Link></li>
+              <li className="items plain"><Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link></li>
+              <li className="buttonNav items" ><Link to="/share" style={{ textDecoration: 'none' }}>Share your story</Link></li>
+            </nav>
+
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/explore" element={<Explore />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/profile" element={<Profile key={session.user.id} session={session}/>} /> 
+              <Route path="/share" element={<Share />} />
+            </Routes>
+          </Router>
+        </>
       }
     </div>
   )
