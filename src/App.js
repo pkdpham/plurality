@@ -34,7 +34,7 @@ export default function App() {
         !session ? <Landing /> : 
         <>
           <Router>
-            <Logo><Link to="/"></Link></Logo>
+            <Link to="/"><Logo/></Link>
             <nav>
               <li className="items plain"><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></li>
               <li className="items plain"><Link to="/explore" style={{ textDecoration: 'none' }}>Explore</Link></li>
