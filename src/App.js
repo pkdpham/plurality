@@ -16,7 +16,11 @@ import Share from "./views/Share"
 
 export default function App() {
   const [session, setSession] = useState(null);
-  
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const toggleNav = () => {
+    setToggleMenu(!toggleMenu)
+  }
 
   useEffect(() => {
     setSession(supabase.auth.session())
@@ -35,11 +39,11 @@ export default function App() {
           <Logo/>
           <Router>
             <nav>
-              <li><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></li>
-              <li><Link to="/explore" style={{ textDecoration: 'none' }}>Explore</Link></li>
-              <li><Link to="/about-us" style={{ textDecoration: 'none' }}>About Us</Link></li>
-              <li><Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link></li>
-              <li className="buttonNav" ><Link to="/share" style={{ textDecoration: 'none' }}>Share your story</Link></li>
+              <li className="items plain"><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></li>
+              <li className="items plain"><Link to="/explore" style={{ textDecoration: 'none' }}>Explore</Link></li>
+              <li className="items plain"><Link to="/about-us" style={{ textDecoration: 'none' }}>About Us</Link></li>
+              <li className="items plain"><Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link></li>
+              <li className="buttonNav items" ><Link to="/share" style={{ textDecoration: 'none' }}>Share your story</Link></li>
             </nav>
 
             <Routes>
