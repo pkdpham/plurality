@@ -20,6 +20,12 @@ export default function App() {
           onEditorStateChange={setEditorState}
         />
       </div>
+      <button
+          className="button block primary"
+          onClick={() => App({ editorState })}
+        >
+          {'Publish'}
+        </button>
     </div>
   );
 }
