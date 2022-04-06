@@ -487,13 +487,15 @@ button.primary,
 }
 
 h1 {
-  font-size: ;
+  font-size: x-large;
+  font-weight: bolder;
 }
 
 h2 {
-  font-size:
+  font-size: large;
 }
 
 h3 {
-  font-size: ;
+  font-size: medium;
+  font-weight: bolder;
 }
