@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default function App() {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -29,12 +30,13 @@ export default function App() {
           onEditorStateChange={setEditorState}
         />
       </div>
-      <button
-          className="buttonNav items"
+      <div className="buttonNav">
+        <button
           onClick={() => App({ editorState })}
         >
-          {'Publish'}
+          {'Submit'}
         </button>
+      </div>
     </div>
   );
 }

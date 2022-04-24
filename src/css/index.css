@@ -54,6 +54,10 @@ nav {
   background-color: var(--custom-color-brand-light);
 }
 
+li.plain > a {
+  color: var(--custom-color);
+}
+
 nav li {
   font-weight: 600;
   text-decoration: none;
