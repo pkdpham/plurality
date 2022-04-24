@@ -488,7 +488,8 @@ button.primary,
 
 h1 {
   font-size: x-large;
-  font-weight: bolder;
+  font-weight: 700%;
+  text-align: left;
 }
 
 h2 {

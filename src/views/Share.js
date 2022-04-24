@@ -13,7 +13,7 @@ export default function App() {
   }, [editorState]);
   return (
     <div>
-      <h1>Share Your Story!</h1>
+      <b><h1>Share Your Story</h1></b>
       <h2>Share about the impacts that United States politics has had on you.</h2>
       <h3>Categorize your story by choosing a topic in the dropdown menu below.</h3>
       <DropdownButton id="dropdown-basic-button" title="Topic">
