@@ -90,8 +90,12 @@ nav li.plain:hover::before {
 
 .mid-container {
   display: flex;
-  flex-direction: row;
   text-align: left;
+}
+
+.story-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .intro {

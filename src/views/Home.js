@@ -19,7 +19,7 @@ function PopularStories() {
             <div>
                 <h1>Popular Stories</h1>
             </div>
-            <div>
+            <div className="card-container">
                 <StoryCard />
                 <StoryCard />
                 <StoryCard />
