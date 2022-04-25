@@ -5,20 +5,20 @@ import { ReactComponent as Logo } from "./img/plurality-logo.svg";
 
 import Landing from "./views/Landing"
 import Home from "./views/Home"
+
 // TODO: implement these modules so we can render them:
 import Explore from "./views/Explore"
 import Profile from "./views/Profile"
 import AboutUs from "./views/AboutUs"
 import Share from "./views/Share"
-// import Story from "./views/Story"
 
 export default function App() {
   const [session, setSession] = useState(null);
-  const [toggleMenu, setToggleMenu] = useState(false);
+  // const [toggleMenu, setToggleMenu] = useState(false);
 
-  const toggleNav = () => {
-    setToggleMenu(!toggleMenu)
-  }
+  // const toggleNav = () => {
+  //   setToggleMenu(!toggleMenu)
+  // }
  
   useEffect(() => {
     setSession(supabase.auth.session())

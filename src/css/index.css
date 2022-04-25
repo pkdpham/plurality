@@ -85,7 +85,8 @@ nav li.plain:hover::before {
 
 .top-container {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .mid-container {
@@ -507,4 +508,13 @@ h2 {
 h3 {
   font-size: medium;
   font-weight: bolder;
+}
+
+.dropdown-toggle.btn.btn-primary {
+  background-color: var(--custom-color-brand);
+  border: none;
+}
+
+.rdw-editor-main {
+  padding: 0 10px 0 10px;
 }
