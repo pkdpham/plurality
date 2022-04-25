@@ -34,10 +34,23 @@ export default function App() {
           <Dropdown.Item eventKey="Healthcare">Healthcare</Dropdown.Item>
         </DropdownButton>
       </div>
-      <div style={{ border: "1px solid black", padding: '2px', minHeight: '400px' }}>
+      <div style={{ border: "1px solid black", padding: '2px', minHeight: '400px', borderRadius: '5px' }}>
         <Editor
           editorState={editorState}
           onEditorStateChange={setEditorState}
+          toolbar={{
+            options: ['inline', 'blockType', 'fontSize', 'textAlign', 'list', 'link', 'emoji', 'history'],
+            inline: { 
+              options: ['bold', 'italic', 'underline', 'strikethrough']
+            },
+            blockType: {
+              options: ['Normal', 'H1', 'H2', 'H3', 'H4', 'Blockquote', 'Code'],
+            },
+            list: { inDropdown: true },
+            textAlign: { inDropdown: false },
+            link: { inDropdown: true },
+            history: { inDropdown: false },
+          }}
         />
       </div>
       <div className="buttonNav" style={{ paddingTop: '1em' }}>
