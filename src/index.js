@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './tests/reportWebVitals';
 

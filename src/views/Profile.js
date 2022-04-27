@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
+import { Grid, TextField } from '@mui/material';
 
 // TODO: update API calls to new schema for user table
 // from table auth/users: email, password
@@ -71,19 +72,21 @@ export default function Profile({ session }) {
         <p>MIRANDA TROGARD</p>
       </div>
       <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={session.user.email} disabled />
+        <TextField id="email" label="Email" variant="standard" value={session.user.email} disabled/>
       </div>
       <div>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-          value={username || ''}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <TextField id="username" label="Username" variant="standard" value={username || ''}
+          onChange={(e) => setUsername(e.target.value)}/>
       </div>
-
+      <div>
+        <TextField id="location" label="Location" variant="standard" />
+      </div>
+      <div>
+        <TextField id="politic" label="Political Standing" variant="standard" />
+      </div>
+      <div>
+        <TextField id="race" label="Race/Ethnicity" variant="standard" />
+      </div>
       <div>
         <button
           className="button block primary"

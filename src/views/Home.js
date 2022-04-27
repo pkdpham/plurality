@@ -18,7 +18,7 @@ function PopularStories() {
     return (
         <Grid container direction="column" className='mid-container'>
             <div>
-                <h1>Popular Stories</h1>
+                <h1 className="title">Popular Stories</h1>
             </div>
             <Grid container direction="row" className="card-container">
                 <StoryCard />

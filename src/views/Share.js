@@ -42,7 +42,7 @@ export default function Share() {
   return (
     <>
       <div style={{ marginTop: "20px" }}>
-        <h1>Share Your Story</h1>
+        <h1 className="title">Share Your Story</h1>
         <p>Share about the impacts that United States politics has had on you.</p>
         <p>Categorize your story by choosing a topic in the dropdown menu below.</p>
       </div>
