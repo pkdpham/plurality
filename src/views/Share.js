@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from "draft-js";
+import { EditorState, ContentState } from "draft-js";
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { supabase } from "../supabaseClient"
 import { convertToRaw } from 'draft-js';
@@ -8,9 +8,9 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Share() {
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
+  const [editorState, setEditorState] = useState(() => {
+    return EditorState.createEmpty()
+  });
 
   const [topic, setTopic] = useState('Topic');
 
@@ -18,18 +18,20 @@ export default function Share() {
     setTopic(e)
   }
 
-  const handleSubmit = async (content, topic) => {
-    let jsonText = JSON.stringify(convertToRaw(content))
-    const user = supabase.auth.user()
-    console.log(jsonText, topic)
+  const titleForm = useRef(null);
+  const [titleState, setTitleState] = useState('')
 
-    console.log(user)
+  const handleClickEvent = async (content, topic) => {
+    const user = supabase.auth.user()
+    let jsonText = JSON.stringify(convertToRaw(content))
+    let title = titleForm.current
 
     const { data, error } = await supabase
       .from('stories')
       .insert([
         { 
           author_id: user.id,
+          title: title,
           content: jsonText,
           attributes: {
             topic: topic,
@@ -55,6 +57,15 @@ export default function Share() {
           <Dropdown.Item eventKey="Social Justice">Social Justice</Dropdown.Item>
         </DropdownButton>
       </div>
+      <div>
+        <form 
+          ref={titleForm} 
+          onChange={(e) => setTitleState(e.target.value)} 
+          style={{ padding: '0 0 1em 0' }}
+        >
+            <input type="text" name="title" placeholder="Title" />
+        </form>
+      </div>
       <div style={{ border: "1px solid black", padding: '2px', minHeight: '400px', borderRadius: '5px' }}>
         <Editor
           editorState={editorState}
@@ -72,11 +83,12 @@ export default function Share() {
             link: { inDropdown: true },
             history: { inDropdown: false },
           }}
+          placeholder="Give some context about where you come from. Think about the message you're trying to convey through your story."
         />
       </div>
       <div className="buttonNav" style={{ paddingTop: '1em' }}>
         <button
-          onClick={ () => handleSubmit(editorState.getCurrentContent(), topic) }
+          onClick={ () => handleClickEvent(editorState.getCurrentContent(), topic) }
           style={{ border: 'none' }}
         >
           {'Submit'}
