@@ -24,6 +24,15 @@ function PopularStories() {
                 <StoryCard />
                 <StoryCard />
                 <StoryCard />
+                <StoryCard />
+                <StoryCard />
+                <StoryCard />
+                <StoryCard />
+                <StoryCard />
+                <StoryCard />
+                <StoryCard />
+                <StoryCard />
+                <StoryCard />
             </Grid>
         </Grid>
     )

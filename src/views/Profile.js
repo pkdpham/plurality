@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
-import { Grid, TextField } from '@mui/material';
+import { Grid, TextField, Switch } from '@mui/material'
+
 
 // TODO: update API calls to new schema for user table
 // from table auth/users: email, password
@@ -9,6 +10,11 @@ import { Grid, TextField } from '@mui/material';
 export default function Profile({ session }) {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
+  const [emailChecked, setEmailChecked] = useState(false)
+  const [userChecked, setUserChecked] = useState(false)
+  const [locationChecked, setLocationChecked] = useState(false)
+  const [poliChecked, setPoliChecked] = useState(false)
+  const [raceChecked, setRaceChecked] = useState(false)
 
   useEffect(() => {
     getProfile()
@@ -65,6 +71,22 @@ export default function Profile({ session }) {
     }
   }
 
+  const switchEmailHandler = (event) => {
+    setEmailChecked(event.target.checked);
+  };
+  const switchUserHandler = (event) => {
+    setUserChecked(event.target.checked);
+  };
+  const switchLocationHandler = (event) => {
+    setLocationChecked(event.target.checked);
+  };
+  const switchPoliHandler = (event) => {
+    setPoliChecked(event.target.checked);
+  };
+  const switchRaceHandler = (event) => {
+    setRaceChecked(event.target.checked);
+  };
+
   return (
     <div className="form-widget">
       <div className="profilePicContainer">
@@ -73,19 +95,24 @@ export default function Profile({ session }) {
       </div>
       <div>
         <TextField id="email" label="Email" variant="standard" value={session.user.email} disabled/>
+        <Switch checked={emailChecked} onChange={switchEmailHandler}/>
       </div>
       <div>
         <TextField id="username" label="Username" variant="standard" value={username || ''}
           onChange={(e) => setUsername(e.target.value)}/>
+        <Switch checked={userChecked} onChange={switchUserHandler}/>
       </div>
       <div>
         <TextField id="location" label="Location" variant="standard" />
+        <Switch checked={locationChecked} onChange={switchLocationHandler}/>
       </div>
       <div>
         <TextField id="politic" label="Political Standing" variant="standard" />
+        <Switch checked={poliChecked} onChange={switchPoliHandler}/>
       </div>
       <div>
         <TextField id="race" label="Race/Ethnicity" variant="standard" />
+        <Switch checked={raceChecked} onChange={switchRaceHandler}/>
       </div>
       <div>
         <button
