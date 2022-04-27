@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, ContentState } from "draft-js";
 import { Dropdown, DropdownButton } from 'react-bootstrap';
@@ -18,20 +18,18 @@ export default function Share() {
     setTopic(e)
   }
 
-  const titleForm = useRef(null);
   const [titleState, setTitleState] = useState('')
 
   const handleClickEvent = async (content, topic) => {
     const user = supabase.auth.user()
     let jsonText = JSON.stringify(convertToRaw(content))
-    let title = titleForm.current
 
     const { data, error } = await supabase
       .from('stories')
       .insert([
         { 
           author_id: user.id,
-          title: title,
+          title: titleState,
           content: jsonText,
           attributes: {
             topic: topic,
@@ -58,8 +56,7 @@ export default function Share() {
         </DropdownButton>
       </div>
       <div>
-        <form 
-          ref={titleForm} 
+        <form
           onChange={(e) => setTitleState(e.target.value)} 
           style={{ padding: '0 0 1em 0' }}
         >
