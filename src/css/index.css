@@ -510,15 +510,6 @@ h1 {
   text-align: left;
 }
 
-h2 {
-
-}
-
-h3 {
-
-  font-weight: 500;
-}
-
 .dropdown-toggle.btn.btn-primary {
   background-color: var(--custom-color-brand);
   border: none;
