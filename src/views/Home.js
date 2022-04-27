@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { ReactComponent as Art } from "../img/home-tree.svg";
 import StoryCard from "../components/StoryCard"
+import Grid from '@mui/material/Grid';
 
 function HomeStyling() {
     return (
@@ -15,16 +16,16 @@ function HomeStyling() {
 
 function PopularStories() {
     return (
-        <div className='mid-container'>
+        <Grid container direction="column" className='mid-container'>
             <div>
                 <h1>Popular Stories</h1>
             </div>
-            <div className="card-container">
+            <Grid container direction="row" className="card-container">
                 <StoryCard />
                 <StoryCard />
                 <StoryCard />
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     )
 }
 

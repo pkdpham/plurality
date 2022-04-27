@@ -41,9 +41,11 @@ export default function Share() {
 
   return (
     <>
-      <b><h1>Share Your Story</h1></b>
-      <h2>Share about the impacts that United States politics has had on you.</h2>
-      <h3>Categorize your story by choosing a topic in the dropdown menu below.</h3>
+      <div style={{ marginTop: "20px" }}>
+        <b><h1>Share Your Story</h1></b>
+        <h2>Share about the impacts that United States politics has had on you.</h2>
+        <h3>Categorize your story by choosing a topic in the dropdown menu below.</h3>
+      </div>
       <div style={{ paddingTop: '1em', paddingBottom: '1em' }}>
         <DropdownButton id="dropdown-basic-button" title={topic} onSelect={handleSelect}>
           <Dropdown.Item eventKey="COVID-19">COVID-19</Dropdown.Item>
