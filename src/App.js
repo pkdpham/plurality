@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { supabase } from "./supabaseClient"
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ReactComponent as Logo } from "./img/plurality-logo.svg";
+import { positions, Provider } from "react-alert";
+import AlertMUITemplate from "react-alert-template-mui";
 
 import Landing from "./views/Landing"
 import Home from "./views/Home"
@@ -14,6 +16,9 @@ import Share from "./views/Share"
 
 export default function App() {
   const [session, setSession] = useState(null);
+  const options = {
+    position: positions.MIDDLE
+  };
   // const [toggleMenu, setToggleMenu] = useState(false);
 
   // const toggleNav = () => {
@@ -48,7 +53,15 @@ export default function App() {
               <Route path="/explore" element={<Explore />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/profile" element={<Profile key={session.user.id} session={session}/>} /> 
-              <Route path="/share" element={<Share />} />
+              <Route 
+                path="/share"
+                // TODO: pretty sure this is causing issues: "findDOMNode is deprecated in StrictMode"
+                element={
+                  <Provider template={AlertMUITemplate} {...options}>
+                      <Share />
+                  </Provider>
+                }
+              />
             </Routes>
           </Router>
         </>

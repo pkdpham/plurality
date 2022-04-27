@@ -17,7 +17,7 @@ export default function StoryCard() {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Like</Button>
+                <Button size="small">Heart</Button>
             </CardActions>
         </>
     )

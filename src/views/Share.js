@@ -1,28 +1,29 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, ContentState } from "draft-js";
+import { EditorState } from "draft-js";
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { supabase } from "../supabaseClient"
 import { convertToRaw } from 'draft-js';
+import { useAlert } from "react-alert";
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Share() {
   const [editorState, setEditorState] = useState(() => {
-    return EditorState.createEmpty()
+    return EditorState.createEmpty();
   });
-
   const [topic, setTopic] = useState('Topic');
-
-  const handleSelect = (e) => {
-    setTopic(e)
-  }
-
   const [titleState, setTitleState] = useState('')
 
+  const alert = useAlert();
+  // const [action, setAction] = useState("");
+  let navigate = useNavigate();
+
   const handleClickEvent = async (content, topic) => {
-    const user = supabase.auth.user()
-    let jsonText = JSON.stringify(convertToRaw(content))
+    const user = supabase.auth.user();
+    let jsonText = JSON.stringify(convertToRaw(content));
 
     const { data, error } = await supabase
       .from('stories')
@@ -36,7 +37,9 @@ export default function Share() {
             hearts: 1
           }
         }
-      ], { returning: 'minimal' })
+      ], { returning: 'minimal' });
+      
+      navigate("/", { replace: true});
   }
 
   return (
@@ -47,7 +50,7 @@ export default function Share() {
         <p>Categorize your story by choosing a topic in the dropdown menu below.</p>
       </div>
       <div style={{ paddingTop: '1em', paddingBottom: '1em' }}>
-        <DropdownButton id="dropdown-basic-button" title={topic} onSelect={handleSelect}>
+        <DropdownButton id="dropdown-basic-button" title={topic} onSelect={setTopic}>
           <Dropdown.Item eventKey="COVID-19">COVID-19</Dropdown.Item>
           <Dropdown.Item eventKey="Economics">Economics</Dropdown.Item>
           <Dropdown.Item eventKey="Gun Policy">Gun Policy</Dropdown.Item>
@@ -87,7 +90,17 @@ export default function Share() {
       </div>
       <div className="buttonNav" style={{ paddingTop: '1em' }}>
         <button
-          onClick={ () => handleClickEvent(editorState.getCurrentContent(), topic) }
+          onClick={ () => {
+            alert.show("Are you ready to submit?", {
+            actions: [
+                {
+                  copy: "Submit",
+                  onClick: () => handleClickEvent(editorState.getCurrentContent(), topic)
+                }
+              ],
+            closeCopy: "Cancel"
+            });
+          }}
           style={{ border: 'none' }}
         >
           {'Submit'}
