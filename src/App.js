@@ -7,6 +7,7 @@ import AlertMUITemplate from "react-alert-template-mui";
 
 import Landing from "./views/Landing"
 import Home from "./views/Home"
+import Story from "./views/Story"
 
 // TODO: implement these modules so we can render them:
 import Explore from "./views/Explore"
@@ -62,6 +63,7 @@ export default function App() {
                   </Provider>
                 }
               />
+              <Route path="/story/:id" element={<Story />} />
             </Routes>
           </Router>
         </>

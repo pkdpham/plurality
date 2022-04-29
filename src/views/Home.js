@@ -21,7 +21,7 @@ function PopularStories() {
                 <h1 className="title">Popular Stories</h1>
             </div>
             <Grid container direction="row" className="card-container">
-                <StoryCard />
+                <StoryCard id={"example_id"}/>
                 <StoryCard />
                 <StoryCard />
                 <StoryCard />

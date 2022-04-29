@@ -5,7 +5,10 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
-export default function StoryCard() {
+import { Link } from "react-router-dom";
+
+export default function StoryCard(props) {
+
     const card = (
         <>
             <CardContent>
@@ -24,9 +27,11 @@ export default function StoryCard() {
 
     return(
         <>
-            <Box sx={{ minWidth: 275 }}>
-                <Card variant="outlined">{card}</Card>
-            </Box> 
+            <Link to={`/story/${props.id}`}>
+                <Box sx={{ minWidth: 275 }}>
+                    <Card variant="outlined">{card}</Card>
+                </Box> 
+            </Link>
         </>
     )
 }
