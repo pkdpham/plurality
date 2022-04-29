@@ -90,7 +90,7 @@ export default function Profile({ session }) {
   return (
     <div className="form-widget">
       <div className="profilePicContainer">
-        <img src="miranda.jpeg" alt="profile placeholder" width="200px" height="200px" ></img>
+        <img src={process.env.PUBLIC_URL + "/miranda.jpeg"} alt="profile placeholder" width="200px" height="200px" ></img>
         <p>MIRANDA TROGARD</p>
       </div>
       <div>
