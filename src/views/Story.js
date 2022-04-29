@@ -7,6 +7,9 @@ import { useParams } from 'react-router-dom'
 export default function Story() {
     const { id } = useParams()
 
+    // TODO: promise(?) and requests go here
+
+    // TODO: fill this return with story name, content, and everything from the HTTP request
     return(
         <>
           <Typography variant="h5" component="div">

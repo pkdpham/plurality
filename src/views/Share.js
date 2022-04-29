@@ -22,24 +22,31 @@ export default function Share() {
   let navigate = useNavigate();
 
   const handleClickEvent = async (content, topic) => {
-    const user = supabase.auth.user();
-    let jsonText = JSON.stringify(convertToRaw(content));
-
-    const { data, error } = await supabase
-      .from('stories')
-      .insert([
-        { 
-          author_id: user.id,
-          title: titleState,
-          content: jsonText,
-          attributes: {
-            topic: topic,
-            hearts: 1
+    try {
+      const user = supabase.auth.user();
+      let jsonText = JSON.stringify(convertToRaw(content));
+  
+      const { data, error } = await supabase
+        .from('stories')
+        .insert([
+          { 
+            author_id: user.id,
+            title: titleState,
+            content: jsonText,
+            attributes: {
+              topic: topic,
+              hearts: 1
+            }
           }
-        }
-      ], { returning: 'minimal' });
-      
-      navigate("/", { replace: true});
+        ], { returning: 'minimal' });
+  
+        // TODO: fetch the unique ID from the database and use that ID to jump to the new page
+        
+        // TODO: change navigate from home to specific ID page: /story/<ID>
+        navigate("/", { replace: true});
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   return (

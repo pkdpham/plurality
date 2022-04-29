@@ -15,6 +15,8 @@ function HomeStyling() {
 }
 
 function PopularStories() {
+    // TODO: use request to grab X# of most popular stories from the database
+    //  - maybe use .map to render the cards?
     return (
         <Grid container direction="column" className='mid-container'>
             <div>
