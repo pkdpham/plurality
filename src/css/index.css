@@ -528,3 +528,14 @@ h1.title{
 .public-DraftEditorPlaceholder-inner {
   opacity: 0.4;
 }
+
+.box {
+  width: 48% !important;
+  border-color: #E5E5E5;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  align-items: center;
+  padding: 15px;
+  min-height: 600px;
+}

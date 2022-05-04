@@ -88,47 +88,65 @@ export default function Profile({ session }) {
   };
 
   return (
-    <div className="form-widget">
-      <div className="profilePicContainer">
-        <img src={process.env.PUBLIC_URL + "/miranda.jpeg"} alt="profile placeholder" width="200px" height="200px" ></img>
-        <p>MIRANDA TROGARD</p>
-      </div>
-      <div>
-        <TextField id="email" label="Email" variant="standard" value={session.user.email} disabled/>
-        <Switch checked={emailChecked} onChange={switchEmailHandler}/>
-      </div>
-      <div>
-        <TextField id="username" label="Username" variant="standard" value={username || ''}
-          onChange={(e) => setUsername(e.target.value)}/>
-        <Switch checked={userChecked} onChange={switchUserHandler}/>
-      </div>
-      <div>
-        <TextField id="location" label="Location" variant="standard" />
-        <Switch checked={locationChecked} onChange={switchLocationHandler}/>
-      </div>
-      <div>
-        <TextField id="politic" label="Political Standing" variant="standard" />
-        <Switch checked={poliChecked} onChange={switchPoliHandler}/>
-      </div>
-      <div>
-        <TextField id="race" label="Race/Ethnicity" variant="standard" />
-        <Switch checked={raceChecked} onChange={switchRaceHandler}/>
-      </div>
-      <div>
-        <button
-          className="button block primary"
-          onClick={() => updateProfile({ username })}
-          disabled={loading}
-        >
-          {loading ? 'Saving ...' : 'Save'}
-        </button>
-      </div>
-
-      <div>
-        <button className="button block" onClick={() => supabase.auth.signOut()}>
-          Sign Out
-        </button>
-      </div>
-    </div>
+    <Grid container direction="row" className="form-widget">
+      <Grid container direction="column" className="box">
+        <div className="profilePicContainer">
+          <img src={process.env.PUBLIC_URL + "/miranda.jpeg"} alt="profile placeholder" width="200px" height="200px" ></img>
+          <p>MIRANDA TROGARD</p>
+        </div>
+        <div>
+          <TextField id="email" label="Email" variant="standard" value={session.user.email} disabled/>
+          <Switch checked={emailChecked} onChange={switchEmailHandler}/>
+        </div>
+        <div>
+          <TextField id="username" label="Username" variant="standard" value={username || ''}
+            onChange={(e) => setUsername(e.target.value)}/>
+          <Switch checked={userChecked} onChange={switchUserHandler}/>
+        </div>
+        <div>
+          <TextField id="location" label="Location" variant="standard" />
+          <Switch checked={locationChecked} onChange={switchLocationHandler}/>
+        </div>
+        <div>
+          <TextField id="politic" label="Political Standing" variant="standard" />
+          <Switch checked={poliChecked} onChange={switchPoliHandler}/>
+        </div>
+        <div>
+          <TextField id="race" label="Race/Ethnicity" variant="standard" />
+          <Switch checked={raceChecked} onChange={switchRaceHandler}/>
+        </div>
+        <div>
+          <br></br>
+          <button
+            className="button block primary"
+            onClick={() => updateProfile({ username })}
+            disabled={loading}
+          >
+            {loading ? 'Saving ...' : 'Save'}
+          </button>
+          <br></br>
+          <br></br>
+        </div>
+        <div>
+          <button className="button block" onClick={() => supabase.auth.signOut()}>
+            Sign Out
+          </button>
+        </div>
+      </Grid>
+      <Grid container direction="column" className="box">
+        <div>
+          Storyteller
+        </div>
+        <div>
+            <button
+              className="button block primary"
+              onClick={() => updateProfile({ username })}
+              disabled={loading}
+            >
+              {loading ? 'Saving ...' : 'Save'}
+            </button>
+          </div>
+      </Grid>
+    </Grid>
   )
 }
