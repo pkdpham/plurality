@@ -2,8 +2,10 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import IconButton from '@mui/material/IconButton';
 
 import { Link } from "react-router-dom";
 
@@ -20,7 +22,8 @@ export default function StoryCard(props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Heart</Button>
+                <IconButton size="small"><FavoriteBorderIcon/></IconButton>
+                {/* toggle FavoriteIcon*/}
             </CardActions>
         </>
     )
@@ -28,7 +31,7 @@ export default function StoryCard(props) {
     return(
         <>
             <Link to={`/story/${props.id}`}>
-                <Box sx={{ minWidth: 275 }}>
+                <Box sx={{ minWidth: 275 } } className='story-card'>
                     <Card variant="outlined">{card}</Card>
                 </Box> 
             </Link>

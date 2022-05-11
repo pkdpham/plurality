@@ -539,3 +539,11 @@ h1.title{
   padding: 15px;
   min-height: 600px;
 }
+
+.card-container {
+  margin: 15px;
+}
+
+.story-card {
+  margin: 15px;
+}
