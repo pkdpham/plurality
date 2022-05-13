@@ -39,14 +39,15 @@ export default function Share() {
             }
           }
         ], { returning: 'minimal' });
-  
+
         // TODO: fetch the unique ID from the database and use that ID to jump to the new page
         
-        // TODO: change navigate from home to specific ID page: /story/<ID>
-        navigate("/", { replace: true});
     } catch (error) {
       console.log(error.message)
     }
+
+    // TODO: change navigate from home to specific ID page: /story/<ID>
+    navigate("/", { replace: true});
   }
 
   return (
@@ -92,7 +93,7 @@ export default function Share() {
             link: { inDropdown: true },
             history: { inDropdown: false },
           }}
-          placeholder="Give some context about where you come from. Think about the message you're trying to convey through your story."
+          placeholder=" Give some context about where you come from. Think about the message you're trying to convey through your story."
         />
       </div>
       <div className="buttonNav" style={{ paddingTop: '1em' }}>
