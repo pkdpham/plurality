@@ -27,21 +27,27 @@ function PopularStories() {
             .select('id, title, content, is_public')
             // .eq("user_id", user?.id)
             // .order("id", { ascending: false })
+            // .limit(6) // get the first 6 rows
             .then(({ data, error }) => {
                 if (!error && data !== []) {
                     setStories(data);
                 }
             });
     }, []);
+    
 
-    console.log(stories[0])
+    console.log(stories)
+
+    const storyCards = stories.map((item) => {
+        return <StoryCard id={item.id} title={item.title} key={item.id} content={item.content} />
+    })
 
     // const dataRequest = async () => {
     //     try {
     //         const { data, error } = await supabase
     //         .from('stories')
     //         .select('id, title, content, is_public')
-    //         // .limit(6) // get the first 6 rows
+    
 
     //         if (error) {
     //             throw error
@@ -56,34 +62,15 @@ function PopularStories() {
     //     }
     // }
 
-    // dataRequest();
-    // see mozilla documentation for promises
-    // let data = dataRequest().then(data => setStories(data));
-    // console.log(data);
-    //     .then(result => result.data)
-    //     .then(data => console.log(data))
-    // console.log(data) // TODO: how to unpack data within Promise returned by dataRequest
-    // console.log(data);
-    // console.log(data.then(data => console.log(data)));
-
     return (
         <Grid container direction="column" className='mid-container'>
             <div>
                 <h1 className="title">Popular Stories</h1>
             </div>
             <Grid container direction="row" className="card-container">
-                <StoryCard />
-                <StoryCard />
-                <StoryCard />
-                <StoryCard />
-                <StoryCard />
-                <StoryCard />
-                <StoryCard />
-                <StoryCard />
-                <StoryCard />
-                <StoryCard />
-                <StoryCard />
-                <StoryCard />
+                {storyCards.map((item) => {
+                    return item;
+                })}
             </Grid>
         </Grid>
     )

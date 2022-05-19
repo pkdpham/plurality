@@ -7,47 +7,41 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IconButton from '@mui/material/IconButton';
 
-import { supabase } from "../supabaseClient"
+
 import { Link } from "react-router-dom";
+import { convertFromRaw } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
+
 
 export default function StoryCard(props) {
     let id = props.id;
-    // TODO: with props, get first 10 words of story to preview in card
-    
-    const dataRequest = async (id) => {
-        try {
-            let { data: stories, error } = await supabase
-                .from('stories')
-                .select('title, content') // TODO: get author from profiles table
-                .eq('id', id)
+    let title = props.title;
+    let html = stateToHTML(convertFromRaw(JSON.parse(props.content)));
+    html = html.replace(/<[^>]*>?/gm, '').replace('&nbsp;', '');
 
-            console.log(stories)
-        } catch (error) {
-            // console.log(error.message)
-        }
-    }
+    // TODO: with props, get first 10 words of story to preview in card
 
     const card = (
         <>
-            <CardContent>
+            <CardContent >
                 <Typography variant="h5" component="div">
-                    {id}
+                    {title}
                 </Typography>
                 <Typography variant="body2">
-                    This is the card body text.
+                    {html.slice(0, 100) + '...'}
                 </Typography>
             </CardContent>
             <CardActions>
                 <IconButton size="small"><FavoriteBorderIcon/></IconButton>
-                {/* toggle FavoriteIcon*/}
+                {/* toggle FavoriteIcon */}
             </CardActions>
         </>
     )
 
     return(
         <>
-            <Link to={`/story/${props.id}`}>
-                <Box sx={{ minWidth: 275 } } className='story-card' onClick={dataRequest}>
+            <Link to={`/story/${id}`} textDecoration="none">
+                <Box sx={{ minWidth: 300, maxWidth: 300, minHeight: 250, maxHeight: 250 }} className='story-card' >
                     <Card variant="outlined">{card}</Card>
                 </Box> 
             </Link>

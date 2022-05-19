@@ -12,7 +12,6 @@ import Story from "./views/Story"
 // TODO: implement these modules so we can render them:
 import Explore from "./views/Explore"
 import Profile from "./views/Profile"
-import AboutUs from "./views/AboutUs"
 import Share from "./views/Share"
 
 export default function App() {
@@ -20,11 +19,6 @@ export default function App() {
   const options = {
     position: positions.MIDDLE
   };
-  // const [toggleMenu, setToggleMenu] = useState(false);
-
-  // const toggleNav = () => {
-  //   setToggleMenu(!toggleMenu)
-  // }
  
   useEffect(() => {
     setSession(supabase.auth.session())
@@ -44,7 +38,7 @@ export default function App() {
             <nav>
               <li className="items plain"><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></li>
               <li className="items plain"><Link to="/explore" style={{ textDecoration: 'none' }}>Explore</Link></li>
-              <li className="items plain"><Link to="/about-us" style={{ textDecoration: 'none' }}>About Us</Link></li>
+              <li className="items plain"><a href="https://plurality.webflow.io/" style={{ textDecoration: 'none' }}>About Us</a></li>
               <li className="items plain"><Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link></li>
               <li className="buttonNav items" ><Link to="/share" style={{ textDecoration: 'none' }}>Share your story</Link></li>
             </nav>
@@ -52,7 +46,6 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/explore" element={<Explore />} />
-              <Route path="/about-us" element={<AboutUs />} />
               <Route path="/profile" element={<Profile key={session.user.id} session={session}/>} /> 
               <Route 
                 path="/share"
