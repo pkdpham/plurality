@@ -24,11 +24,11 @@ export default function StoryCard(props) {
     const card = (
         <>
             <CardContent >
-                <Typography variant="h5" component="div">
-                    {title}
+                <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }} component="div">
+                    {title.slice(0, 30) + '...'}
                 </Typography>
-                <Typography variant="body2">
-                    {html.slice(0, 100) + '...'}
+                <Typography variant="caption">
+                    {html.slice(0, 75) + '...'}
                 </Typography>
             </CardContent>
             <CardActions>

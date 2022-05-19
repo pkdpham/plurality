@@ -530,14 +530,14 @@ h1.title{
 }
 
 .box {
-  width: 48% !important;
+  width: 35% !important;
+  height: 100%;
   border-color: #E5E5E5;
   border-width: 2px;
   border-style: solid;
   border-radius: 25px;
   align-items: center;
-  padding: 15px;
-  min-height: 600px;
+  padding: 50px;
 }
 
 .card-container {

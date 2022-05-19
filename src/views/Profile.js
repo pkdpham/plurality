@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
 import { Grid, TextField, Switch } from '@mui/material'
+import { ReactComponent as Art } from "../img/profile-stats.svg";
 
 
 // TODO: update API calls to new schema for user table
@@ -88,11 +89,11 @@ export default function Profile({ session }) {
   };
 
   return (
-    <Grid container direction="row" className="form-widget">
+    <Grid container direction="row" className="form-widget" style={{height: "900px"}}>
       <Grid container direction="column" className="box">
         <div className="profilePicContainer">
-          <img src={process.env.PUBLIC_URL + "/miranda.jpeg"} alt="profile placeholder" width="200px" height="200px" ></img>
-          <p>MIRANDA TROGARD</p>
+          <img src={process.env.PUBLIC_URL + "/riley.jpeg"} alt="profile placeholder" width="200px" height="200px" ></img>
+          <p>RILEY TROGARD</p>
         </div>
         <div>
           <TextField id="email" label="Email" variant="standard" value={session.user.email} disabled/>
@@ -133,20 +134,7 @@ export default function Profile({ session }) {
           </button>
         </div>
       </Grid>
-      <Grid container direction="column" className="box">
-        <div>
-          Storyteller
-        </div>
-        <div>
-            <button
-              className="button block primary"
-              onClick={() => updateProfile({ username })}
-              disabled={loading}
-            >
-              {loading ? 'Saving ...' : 'Save'}
-            </button>
-          </div>
-      </Grid>
+      <Art style={{ marginTop: '50px', marginBottom: '50px', height: '100%'}}/>
     </Grid>
   )
 }
