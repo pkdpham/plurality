@@ -25,8 +25,6 @@ export default function Share() {
     try {
       const user = supabase.auth.user();
       let jsonText = JSON.stringify(convertToRaw(content));
-
-      let text = editorState.getPlainText()
   
       const { data, error } = await supabase
         .from('stories')
