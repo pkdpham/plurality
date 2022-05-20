@@ -514,6 +514,7 @@ h1.title{
   font-weight: 700 !important;
   text-align: left !important;
   font-size: 30px !important;
+  margin-bottom: 30px;
 }
 
 .dropdown-toggle.btn.btn-primary {
@@ -545,7 +546,8 @@ h1.title{
 }
 
 .story-card {
-  margin: 15px;
+  margin-right: 30px;
+  margin-bottom: -50px !important;
 }
 
 .MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {

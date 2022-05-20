@@ -24,8 +24,8 @@ export default function StoryCard(props) {
     const card = (
         <>
             <CardContent >
-                <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }} component="div">
-                    {title.slice(0, 30) + '...'}
+                <Typography variant="subtitle1" sx={{ fontWeight: 'bold', textDecoration: 'none' }} component="div">
+                    {title.length > 25 ? title.slice(0, 25) + '...' : title}
                 </Typography>
                 <Typography variant="caption">
                     {html.slice(0, 75) + '...'}
