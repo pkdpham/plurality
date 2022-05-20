@@ -1,8 +1,17 @@
 import { useState, useEffect } from 'react'
+import Grid from '@mui/material/Grid';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import SearchIcon from '@mui/icons-material/Search';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import OutlinedInput from '@mui/material/OutlinedInput';
+
+import { supabase } from "../supabaseClient"
 import { ReactComponent as Art } from "../img/home-tree.svg";
 import StoryCard from "../components/StoryCard"
-import Grid from '@mui/material/Grid';
-import { supabase } from "../supabaseClient"
 
 function HomeStyling() {
     return (
@@ -15,18 +24,50 @@ function HomeStyling() {
     )
 }
 
+function SearchBar() {
+    return (
+        <>
+            <Box 
+                component="form"
+                sx={{
+                    display: 'flex',
+                    '& > :not(style)': { m: 1, width: '100ch' },
+                    justifyContent: 'center',
+                    mb: '40px'
+                }}
+                noValidate
+                autoComplete="off">
+                <FormControl 
+                    fullWidth
+                    variant="outlined">
+                    {/* <InputLabel>{`Search `}</InputLabel> */}
+                    <OutlinedInput
+                        id="outlined-adornment-amount"
+                        // onChange={handleChange('amount')}
+                        startAdornment={
+                            <InputAdornment position="start">
+                                <SearchIcon />
+                            </InputAdornment>
+                        }
+                        placeholder="Search"
+                        label=" "
+                    />
+                </FormControl>
+            </Box>
+        </>
+    )
+}
+
 function PopularStories() {
     // TODO: use request to grab X# of most popular stories from the database
     //  - current request just gets first 6 rows, not ordered by popularity
-    //  - maybe use .map to render the cards?
     const [stories, setStories] = useState([]);
 
     useEffect(() => {
         supabase
             .from("stories")
             .select('id, title, content, is_public')
-            // .eq("user_id", user?.id)
-            // .order("id", { ascending: false })
+            .eq('is_public', true)
             // .limit(6) // get the first 6 rows
             .then(({ data, error }) => {
                 if (!error && data !== []) {
@@ -34,33 +75,12 @@ function PopularStories() {
                 }
             });
     }, []);
-    
 
     console.log(stories)
 
     const storyCards = stories.map((item) => {
         return <StoryCard id={item.id} title={item.title} key={item.id} content={item.content} />
     })
-
-    // const dataRequest = async () => {
-    //     try {
-    //         const { data, error } = await supabase
-    //         .from('stories')
-    //         .select('id, title, content, is_public')
-    
-
-    //         if (error) {
-    //             throw error
-    //         }
-    //         // if (data) {
-    //             // setStories(data)
-    //         // }
-    //         console.log(data)
-    //         return data
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
 
     return (
         <Grid container direction="column" className='mid-container'>
@@ -80,6 +100,7 @@ export default function Home() {
     return (
         <>
             <HomeStyling />
+            <SearchBar />
             <PopularStories />
         </>
     )

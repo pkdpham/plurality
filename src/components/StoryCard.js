@@ -23,11 +23,11 @@ export default function StoryCard(props) {
 
     const card = (
         <>
-            <CardContent >
+            <CardContent sx={{ textDecoration: 'none' }}>
                 <Typography variant="subtitle1" sx={{ fontWeight: 'bold', textDecoration: 'none' }} component="div">
                     {title.length > 25 ? title.slice(0, 25) + '...' : title}
                 </Typography>
-                <Typography variant="caption">
+                <Typography variant="caption" sx={{ textDecoration: 'none' }}>
                     {html.slice(0, 75) + '...'}
                 </Typography>
             </CardContent>
@@ -40,8 +40,8 @@ export default function StoryCard(props) {
 
     return(
         <>
-            <Link to={`/story/${id}`} textDecoration="none">
-                <Box sx={{ minWidth: 300, maxWidth: 300, minHeight: 250, maxHeight: 250 }} className='story-card' >
+            <Link to={`/story/${id}`} sx={{ textDecoration: 'none' }}>
+                <Box sx={{ minWidth: 300, maxWidth: 300, minHeight: 250, maxHeight: 250, textDecoration: 'none' }} className='story-card' >
                     <Card variant="outlined">{card}</Card>
                 </Box> 
             </Link>
