@@ -63,10 +63,10 @@ function PopularStories() {
     //  - current request just gets first 6 rows, not ordered by popularity
     const [stories, setStories] = useState([]);
 
-    useEffect(() => {
-        supabase
+    useEffect(async () => {
+        await supabase
             .from("stories")
-            .select('id, title, content, is_public')
+            .select('id, title, content, is_public, attributes')
             .eq('is_public', true)
             // .limit(6) // get the first 6 rows
             .then(({ data, error }) => {
@@ -79,7 +79,7 @@ function PopularStories() {
     console.log(stories)
 
     const storyCards = stories.map((item) => {
-        return <StoryCard id={item.id} title={item.title} key={item.id} content={item.content} />
+        return <StoryCard id={item.id} title={item.title} key={item.id} content={item.content} attributes={item.attributes}/>
     })
 
     return (

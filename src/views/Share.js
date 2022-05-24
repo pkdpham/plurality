@@ -16,7 +16,7 @@ export default function Share() {
   });
   const [topic, setTopic] = useState('Topic');
   const [titleState, setTitleState] = useState('')
-
+  
   const alert = useAlert();
   // const [action, setAction] = useState("");
   let navigate = useNavigate();
@@ -54,10 +54,14 @@ export default function Share() {
     <>
       <div style={{ marginTop: "20px" }}>
         <h1 className="title">Share Your Story</h1>
-        <p>Share about the impacts that United States politics has had on you.</p>
-        <p>Categorize your story by choosing a topic in the dropdown menu below.</p>
+        <h5 style={{ fontWeight: '100' }}>
+          Share about the impacts that United States politics has had on you.
+        </h5>
       </div>
       <div style={{ paddingTop: '1em', paddingBottom: '1em' }}>
+        <p style={{ fontSize: '14px' }}>
+          <b>Categorize your story by choosing a topic in the dropdown menu below.</b>
+        </p>
         <DropdownButton id="dropdown-basic-button" title={topic} onSelect={setTopic}>
           <Dropdown.Item eventKey="COVID-19">COVID-19</Dropdown.Item>
           <Dropdown.Item eventKey="Economics">Economics</Dropdown.Item>
@@ -66,6 +70,7 @@ export default function Share() {
           <Dropdown.Item eventKey="Immigration">Immigration</Dropdown.Item>
           <Dropdown.Item eventKey="Reproductive Rights">Reproductive Rights</Dropdown.Item>
           <Dropdown.Item eventKey="Social Justice">Social Justice</Dropdown.Item>
+          <Dropdown.Item eventKey="Other">Other</Dropdown.Item>
         </DropdownButton>
       </div>
       <div>
@@ -73,10 +78,10 @@ export default function Share() {
           onChange={(e) => setTitleState(e.target.value)} 
           style={{ padding: '0 0 1em 0' }}
         >
-            <input type="text" name="title" placeholder="Title" />
+            <input type="text" name="title" placeholder="Title" style={{ borderColor: '#e5e5e5' }}/>
         </form>
       </div>
-      <div style={{ border: "1px solid black", padding: '2px', minHeight: '400px', borderRadius: '5px' }}>
+      <div style={{ border: "1px solid black", padding: '2px', minHeight: '400px', borderRadius: '5px', borderColor: '#e5e5e5' }}>
         <Editor
           editorState={editorState}
           onEditorStateChange={setEditorState}
@@ -113,6 +118,11 @@ export default function Share() {
         >
           {'Submit'}
         </button>
+      </div>
+      <div style={{ paddingTop: '1em' }}>
+        <p>
+          Your story will be reviewed by a moderator under <b><u>Plurality's Content Policy</u></b> before it is published.
+        </p>
       </div>
     </>
   );
